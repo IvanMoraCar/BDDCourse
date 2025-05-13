@@ -1,7 +1,6 @@
 
-from behave import given, when, then, step
+from behave import given, when, then,step
 from BDDCommon.CommonFuncs import webcommon
-from BDDCommon.CommonConfigs import urlconfig
 import pdb
 # start of step definitions
 
@@ -13,11 +12,10 @@ def go_to_page(context, page):
     :param context:
     :param url:
     """
-    url = urlconfig.URLCONFIG.get(page)
-    print("Navigating to the site: {}".format(url))
 
+    print("Navigating to the page: {}".format(page))
 
-    context.driver = webcommon.go_to(context,page)
+    webcommon.go_to(context, page)
 
 #========================================================================================#
 @then('the page title should be "{expected_title}"')
@@ -39,5 +37,6 @@ def verify_current_url(context, expected_url):
     :param context:
     :param expected_url:
     """
+
 
     webcommon.assert_current_url(context, expected_url)
